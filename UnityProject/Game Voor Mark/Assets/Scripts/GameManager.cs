@@ -30,4 +30,23 @@ public class GameManager : MonoBehaviour
         enabled = false;
     }
 
+    public void Awake()
+    {
+        instance = this;
+    }
+
+    #region "Singleton"
+
+    private static GameManager instance;
+
+    public static GameManager INSTANCE
+    {
+        get
+        {
+            return instance;
+        }
+    }
+
+    #endregion
+
 }

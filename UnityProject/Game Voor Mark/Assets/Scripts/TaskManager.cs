@@ -109,6 +109,14 @@ namespace Assets.Scripts
             }
         }
 
+        private void CheckTaskCount()
+        {
+            if (GetCardCount(TaskState.Todo) > 5 || GetCardCount(TaskState.InProgress) > 5 || GetCardCount(TaskState.Review) > 5)
+            {
+                GameManager.INSTANCE.Lose();
+            }
+        }
+
         #endregion
 
         #region "Abstract/Virtual Methods"
@@ -135,6 +143,9 @@ namespace Assets.Scripts
 
         public void Update()
         {
+            if (GameManager.INSTANCE.Lost)
+                return;
+
             if (currentTasks.Count == 0 || pastTime >= SpawnTimer)
             {
                 SpawnNewCard();
@@ -143,6 +154,7 @@ namespace Assets.Scripts
                 return;
             }
 
+            CheckTaskCount();
             RemoveArchivedCards();
 
             pastTime += Time.deltaTime;
