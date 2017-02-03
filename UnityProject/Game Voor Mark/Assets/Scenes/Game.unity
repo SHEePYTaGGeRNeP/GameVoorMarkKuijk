@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 34824144}
   m_Layer: 5
   m_Name: TaskPanel
-  m_TagString: Untagged
+  m_TagString: TaskPanel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -424,7 +424,7 @@ GameObject:
   - component: {fileID: 830806209}
   m_Layer: 5
   m_Name: ArchiverenPanel
-  m_TagString: Untagged
+  m_TagString: ArchivePanel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -716,7 +716,7 @@ GameObject:
   - component: {fileID: 1211038165}
   m_Layer: 5
   m_Name: ReviewPanel
-  m_TagString: Untagged
+  m_TagString: ReviewPanel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -862,7 +862,7 @@ GameObject:
   - component: {fileID: 1366769803}
   m_Layer: 5
   m_Name: DoingPanel
-  m_TagString: Untagged
+  m_TagString: DoingPanel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
