@@ -5,22 +5,30 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Assets.Scripts;
 
-public class Card : MonoBehaviour, IDragHandler, IEndDragHandler
+public class Card : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHandler
 {
     public Vector3 BeginPosition;
     public string CurrentColumn;
 
     private Task task;
     private MouseManager mm;
+    private GameObject canvas;
 
     void Awake()
     {
         mm = GameObject.Find("MM").GetComponent<MouseManager>();
+        canvas = GameObject.Find("Canvas");
     }
 
     void Start()
     {
         task = this.GetComponent<Task>();
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        this.transform.parent = canvas.transform;
+        this.GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -37,29 +45,30 @@ public class Card : MonoBehaviour, IDragHandler, IEndDragHandler
     {
         TaskState state = task.State;
 
-        if (state == TaskState.Todo && mm.CurrentHover == "TaskPanel" || mm.CurrentHover == "DoingPanel")
+        if (state == TaskState.Todo && mm.CurrentHover == "DoingPanel")
         {
             task.NextState();
+            GUIManager.instance.PlaceCard(this.gameObject, TaskState.InProgress, 0);
             Debug.Log("yay!");
         }
-        else if (state == TaskState.InProgress && mm.CurrentHover == "DoingPanel" || mm.CurrentHover == "ReviewPanel")
+        else if (state == TaskState.InProgress && mm.CurrentHover == "ReviewPanel")
         {
             task.NextState();
+            GUIManager.instance.PlaceCard(this.gameObject, TaskState.Review, 0);
             Debug.Log("yay!");
         }
-        else if (state == TaskState.Review && mm.CurrentHover == "ReviewPanel" || mm.CurrentHover == "ArchiverenPanel")
+        else if (state == TaskState.Review && mm.CurrentHover == "ArchivePanel")
         {
             task.NextState();
-            Debug.Log("yay!");
-        }
-        else if (state == TaskState.Archive && mm.CurrentHover == "ArchiverenPanel")
-        {
-            task.NextState();
+            GUIManager.instance.PlaceCard(this.gameObject, TaskState.Archive, 0);
             Debug.Log("yay!");
         }
         else
         {
+            GUIManager.instance.PlaceCard(this.gameObject, state, 0);
             Debug.Log("nay!");
         }
+
+        this.GetComponent<CanvasGroup>().blocksRaycasts = true;
     }
 }

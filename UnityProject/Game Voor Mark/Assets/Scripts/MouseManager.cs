@@ -5,6 +5,4 @@ using UnityEngine;
 public class MouseManager : MonoBehaviour {
 
     public string CurrentHover;
-
-
 }
