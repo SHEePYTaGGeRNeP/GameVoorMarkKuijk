@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Assets.Scripts
 {
-    enum TaskState
+    public enum TaskState
     {
         Todo = 1,
         InProgress,

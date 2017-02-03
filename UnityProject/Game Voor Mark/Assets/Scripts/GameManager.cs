@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
             Lose();
     }
 
-    private void Lose()
+    public void Lose()
     {
         _lost = true;
         Debug.Log("You lose!");

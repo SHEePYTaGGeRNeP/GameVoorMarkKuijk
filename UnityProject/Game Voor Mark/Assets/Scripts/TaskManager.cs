@@ -65,6 +65,7 @@ namespace Assets.Scripts
             lastSpawned = lastSpawned.Child;
 
             currentTasks.Add(t);
+            GUIManager.instance.PlaceCard(go, t.State, GetCardCount(t.State));
         }
 
         public int GetCardCount(TaskState state)
@@ -92,6 +93,14 @@ namespace Assets.Scripts
                     lastMessage = new MessageHolder(line);
                     messages.Add(lastMessage);
                 }
+            }
+        }
+
+        private void RemoveArchivedCards()
+        {
+            if (GetCardCount(TaskState.Archive) > 0)
+            {
+                currentTasks.RemoveAll(x => x.State == TaskState.Archive);
             }
         }
 
@@ -128,6 +137,8 @@ namespace Assets.Scripts
                 pastTime = 0;
                 return;
             }
+
+            RemoveArchivedCards();
 
             pastTime += Time.deltaTime;
         }
