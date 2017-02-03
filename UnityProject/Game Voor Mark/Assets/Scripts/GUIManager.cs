@@ -35,12 +35,14 @@ public class GUIManager : MonoBehaviour {
         GameObject testObj3 = Instantiate(cardRef);
         GameObject testObj4 = Instantiate(cardRef);
         GameObject testObj5 = Instantiate(cardRef);
+        GameObject testObj6 = Instantiate(cardRef);
 
         PlaceCard(testObj, TaskState.InProgress, 0);
         PlaceCard(testObj2, TaskState.InProgress, 1);
         PlaceCard(testObj3, TaskState.InProgress, 2);
         PlaceCard(testObj4, TaskState.Review, 0);
         PlaceCard(testObj5, TaskState.Review, 1);
+        PlaceCard(testObj6, TaskState.Todo, 0);
     }
 	
 	// Update is called once per frame
@@ -70,7 +72,7 @@ public class GUIManager : MonoBehaviour {
         }
 
         card.transform.SetParent(colRect.transform);
-        cRect.localPosition = new Vector3(cRect.position.x, colRect.position.y - (cardHeight * (tasksInColumn + 1)), cRect.position.z);
+        //cRect.localPosition = new Vector3(cRect.position.x, colRect.position.y - (cardHeight * (tasksInColumn + 1)), cRect.position.z);
         
 
     }
