@@ -7,20 +7,23 @@ public class GameManager : MonoBehaviour
     private bool _lost;
     public bool Lost { get { return _lost; } }
 
-    public float energyLeft = 30;
+    public float energyLeft = 9999999;
     public float cardEnergy = 5f;
+    public int score = 0;
 
     public void Archive()
     {
         if (_lost) return;
-        energyLeft += cardEnergy;
+        energyLeft += cardEnergy;       
     }
 
     private void Update()
     {        
+        /*
         energyLeft = Mathf.Max(0, energyLeft - (Time.deltaTime * 3));
         if (energyLeft == 0)
             Lose();
+            */
     }
 
     public void Lose()
@@ -34,6 +37,7 @@ public class GameManager : MonoBehaviour
     public void Awake()
     {
         instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     #region "Singleton"

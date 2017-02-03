@@ -17,6 +17,11 @@ public class ButtonManager : MonoBehaviour {
 
     public void StartGame()
     {
+        if (GameManager.INSTANCE != null)
+            Destroy(GameManager.INSTANCE.gameObject);
+
         SceneManager.LoadScene(1);
+
+
     }
 }

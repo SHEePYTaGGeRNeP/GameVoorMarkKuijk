@@ -19,6 +19,7 @@ namespace Assets.Scripts
 
         public GameObject TaskPrefab = null;
         public float SpawnTimer = 3f;
+        
 
         #endregion
 
@@ -106,13 +107,14 @@ namespace Assets.Scripts
                 {
                     currentTasks.Remove(t);
                     t.Destroy();
+                    GameManager.INSTANCE.score++;
                 }
             }
         }
 
         private void CheckTaskCount()
         {
-            if (GetCardCount(TaskState.Todo) > 5 || GetCardCount(TaskState.InProgress) > 5 || GetCardCount(TaskState.Review) > 5)
+            if (GetCardCount(TaskState.Todo) > 6 || GetCardCount(TaskState.InProgress) > 6 || GetCardCount(TaskState.Review) > 6)
             {
                 GameManager.INSTANCE.Lose();
             }
@@ -154,6 +156,11 @@ namespace Assets.Scripts
                 pastTime = 0;
                 return;
             }
+
+            SpawnTimer -= 0.01f * Time.deltaTime;
+
+            if (SpawnTimer <= 1f)
+                SpawnTimer = 1f;
 
             CheckTaskCount();
             RemoveArchivedCards();
