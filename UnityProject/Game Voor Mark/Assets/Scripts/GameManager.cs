@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
         _lost = true;
         Debug.Log("You lose!");
         enabled = false;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(2);
     }
 
     public void Awake()
