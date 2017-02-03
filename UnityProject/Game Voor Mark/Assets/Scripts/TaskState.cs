@@ -7,7 +7,7 @@ namespace Assets.Scripts
 {
     enum TaskState
     {
-        Todo,
+        Todo = 1,
         InProgress,
         Review,
         Archive

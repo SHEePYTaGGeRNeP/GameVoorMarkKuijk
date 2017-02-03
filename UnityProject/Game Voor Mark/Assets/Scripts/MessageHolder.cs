@@ -2,46 +2,48 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using UnityEngine;
-using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
-    class Task : MonoBehaviour
+    class MessageHolder
     {
         #region "Fields"
 
-        public string Message;
-        public TaskState State;
+        private string message;
+        private MessageHolder child;
 
         #endregion
 
         #region "Constructors"
 
-
+        public MessageHolder(string message)
+        {
+            this.message = message;
+        }
 
         #endregion
 
         #region "Properties"
 
+        public string Message
+        {
+            get { return message; }
+        }
 
+        public MessageHolder Child
+        {
+            get { return child; }
+        }
 
         #endregion
 
         #region "Methods"
 
-        public void Create(string message)
+        public MessageHolder AddChild(string message)
         {
-            this.Message = message;
-            this.State = TaskState.Todo;
-
-            Text text = GetComponentInChildren<Text>();
-            text.text = message;
-        }
-
-        public void NextState()
-        {
-            State = (TaskState)(((int)State) + 1);
+            MessageHolder m = new MessageHolder(message);
+            child = m;
+            return m;
         }
 
         #endregion

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using UnityEngine;
@@ -12,6 +13,9 @@ namespace Assets.Scripts
 
         private List<Task> currentTasks;
         private float pastTime;
+        private List<MessageHolder> messages;
+        private MessageHolder lastSpawned;
+        private System.Random rand;
 
         public GameObject TaskPrefab = null;
         public float SpawnTimer = 3f;
@@ -50,9 +54,45 @@ namespace Assets.Scripts
         {
             GameObject go = Instantiate(TaskPrefab);
             Task t = go.GetComponent<Task>();
-            t.Create("test");
+
+            if (lastSpawned == null)
+            {
+                lastSpawned = messages[rand.Next(0, messages.Count)];
+            }
+
+            t.Create(lastSpawned.Message);
+
+            lastSpawned = lastSpawned.Child;
 
             currentTasks.Add(t);
+        }
+
+        public int GetCardCount(TaskState state)
+        {
+            return currentTasks.Count(x => x.State == state);
+        }
+
+        public void ParseFile()
+        {
+            const string filename = @"MarkTeksten.txt";
+
+            string[] lines = File.ReadAllLines(filename);
+
+            MessageHolder lastMessage = null;
+            foreach (string line in lines)
+            {
+                if (line == "")
+                    continue;
+                if (line.StartsWith("-"))
+                {
+                    lastMessage = lastMessage.AddChild(line.Remove(0, 1));
+                }
+                else
+                {
+                    lastMessage = new MessageHolder(line);
+                    messages.Add(lastMessage);
+                }
+            }
         }
 
         #endregion
@@ -70,6 +110,13 @@ namespace Assets.Scripts
             instance = this;
 
             currentTasks = new List<Task>();
+            messages = new List<MessageHolder>();
+            rand = new System.Random();
+        }
+
+        public void Start()
+        {
+            ParseFile();
         }
 
         public void Update()
