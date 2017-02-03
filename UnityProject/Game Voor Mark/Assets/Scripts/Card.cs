@@ -9,7 +9,7 @@ public class Card : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
 {
     public Vector3 BeginPosition;
     public string CurrentColumn;
-
+    
     private Task task;
     private MouseManager mm;
     private GameObject canvas;
@@ -27,8 +27,11 @@ public class Card : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        this.transform.parent = canvas.transform;
-        this.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        if (task.State != TaskState.Archive)
+        {
+            this.transform.parent = canvas.transform;
+            this.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -61,6 +64,7 @@ public class Card : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHand
         {
             task.NextState();
             GUIManager.instance.PlaceCard(this.gameObject, TaskState.Archive, 0);
+            GameManager.INSTANCE.Archive();
             Debug.Log("yay!");
         }
         else
