@@ -14,6 +14,8 @@ namespace Assets.Scripts
         private List<Task> currentTasks;
         private float pastTime;
         private List<MessageHolder> messages;
+        private MessageHolder tutorial;
+        private bool tutorialDone;
         private MessageHolder lastSpawned;
         private System.Random rand;
 
@@ -50,16 +52,18 @@ namespace Assets.Scripts
 
         #region "Methods"
 
-        private void SpawnNewCard()
+        private void SpawnNewCard(bool tutorial = false)
         {
             GameObject go = Instantiate(TaskPrefab);
             Task t = go.GetComponent<Task>();
 
-            if (lastSpawned == null)
+            if (lastSpawned == null && !tutorial)
             {
                 MessageHolder[] possible = messages.Where(x => !currentTasks.Any(a => a.Message == x.Message)).ToArray();
                 lastSpawned = possible[rand.Next(0, possible.Length)];
             }
+            else if (tutorial)
+                lastSpawned = this.tutorial;
 
             t.Create(lastSpawned.Message);
 
@@ -85,7 +89,12 @@ namespace Assets.Scripts
             {
                 if (line == "")
                     continue;
-                if (line.StartsWith("-"))
+                if (line.StartsWith("+"))
+                {
+                    tutorial = new MessageHolder(line.Remove(0, 1));
+                    lastMessage = tutorial;
+                }
+                else if (line.StartsWith("-"))
                 {
                     lastMessage = lastMessage.AddChild(line.Remove(0, 1));
                 }
@@ -135,6 +144,7 @@ namespace Assets.Scripts
             currentTasks = new List<Task>();
             messages = new List<MessageHolder>();
             rand = new System.Random();
+            tutorialDone = false;
         }
 
         public void Start()
@@ -147,7 +157,12 @@ namespace Assets.Scripts
             if (GameManager.INSTANCE.Lost)
                 return;
 
-            if (currentTasks.Count == 0 || pastTime >= SpawnTimer)
+            if (!tutorialDone)
+            {
+                SpawnNewCard(true);
+                tutorialDone = true;
+            }
+            else if (currentTasks.Count == 0 || pastTime >= SpawnTimer)
             {
                 SpawnNewCard();
 
