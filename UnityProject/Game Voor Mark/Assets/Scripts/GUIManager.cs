@@ -11,6 +11,7 @@ public class GUIManager : MonoBehaviour {
     public GameObject doingColumn;
     public GameObject reviewColumn;
     public GameObject archiveColumn;
+    public GameObject taskColumn;
 
     [Header("CardRef")]
     public GameObject cardRef;
@@ -55,6 +56,8 @@ public class GUIManager : MonoBehaviour {
 
         if (columnT == TaskState.InProgress)
             colRect = doingColumn.GetComponent<RectTransform>();
+        else if(columnT == TaskState.Todo)
+            colRect = taskColumn.GetComponent<RectTransform>();
         else if (columnT == TaskState.Review)
             colRect = reviewColumn.GetComponent<RectTransform>();
         else if (columnT == TaskState.Archive)
