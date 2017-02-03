@@ -57,8 +57,7 @@ namespace Assets.Scripts
 
             if (lastSpawned == null)
             {
-                List<MessageHolder> possibleMessages = messages.Where(x => !currentTasks.Any(a => a.Message == x.Message)).ToList();
-                lastSpawned = possibleMessages[rand.Next(0, possibleMessages.Count)];
+                lastSpawned = messages[rand.Next(0, messages.Count)];
             }
 
             t.Create(lastSpawned.Message);
@@ -105,14 +104,6 @@ namespace Assets.Scripts
             }
         }
 
-        private void CheckGameState()
-        {
-            if (GetCardCount(TaskState.Todo) > 5 || GetCardCount(TaskState.InProgress) > 5 || GetCardCount(TaskState.Review) > 5)
-            {
-                GameManager.INSTANCE.Lose();
-            }
-        }
-
         #endregion
 
         #region "Abstract/Virtual Methods"
@@ -139,9 +130,6 @@ namespace Assets.Scripts
 
         public void Update()
         {
-            if (GameManager.INSTANCE.Lost)
-                return;
-
             if (currentTasks.Count == 0 || pastTime >= SpawnTimer)
             {
                 SpawnNewCard();
@@ -151,7 +139,6 @@ namespace Assets.Scripts
             }
 
             RemoveArchivedCards();
-            CheckGameState();
 
             pastTime += Time.deltaTime;
         }

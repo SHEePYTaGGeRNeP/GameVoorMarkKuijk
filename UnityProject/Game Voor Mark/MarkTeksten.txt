@@ -4,9 +4,9 @@ Menno ontslaan
 -Studio starten met nieuwe Menno
 -Design4Nature opstellen met nieuwe Menno
 Canvas modules aanmaken
--Vergeten modules openbaar te maken
+-Vergeten modulen openbaar te maken
 Canvas afteken gesprekken aanmaken
--Afspraken opnieuw in canvas zetten vanwege datum
+-Afspraken opniew in canvas zetten vanwege datum
 -Nog een keer opnieuw afspraken in canvas zetten
 Naast Menno in de bus
 Shit van de minor studenten opruimen
@@ -18,4 +18,3 @@ Stoppen met lesgeven om studio te starten
 Vragen of je presentatie goed was
 Kut klusjes doen
 Even een gamejam winnen
-Opleiding voor congierge volgen
