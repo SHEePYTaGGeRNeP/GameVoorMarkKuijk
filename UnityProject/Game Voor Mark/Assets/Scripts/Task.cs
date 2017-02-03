@@ -37,6 +37,7 @@ namespace Assets.Scripts
 
             Text text = GetComponentInChildren<Text>();
             text.text = message;
+            
         }
 
         public void NextState()

@@ -16,8 +16,13 @@ public class GameManager : MonoBehaviour
         energyLeft += 5;
     }
 
+    public void Awake()
+    {
+        instance = this;
+    }
+
     private void Update()
-    {        
+    {
         energyLeft = Mathf.Max(0, energyLeft - (Time.deltaTime * 3));
         if (energyLeft == 0)
             Lose();
@@ -29,5 +34,19 @@ public class GameManager : MonoBehaviour
         Debug.Log("You lose!");
         enabled = false;
     }
+
+    #region "Singleton"
+
+    private static GameManager instance;
+
+    public static GameManager INSTANCE
+    {
+        get
+        {
+            return instance;
+        }
+    }
+
+    #endregion
 
 }
