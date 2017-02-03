@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private bool _lost;
+    public bool Lost { get { return _lost; } }
 
     public float energyLeft = 30;
 
