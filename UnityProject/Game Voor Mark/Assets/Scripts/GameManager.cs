@@ -8,12 +8,12 @@ public class GameManager : MonoBehaviour
     public bool Lost { get { return _lost; } }
 
     public float energyLeft = 30;
-
+    public float cardEnergy = 5f;
 
     public void Archive()
     {
         if (_lost) return;
-        energyLeft += 5;
+        energyLeft += cardEnergy;
     }
 
     private void Update()
