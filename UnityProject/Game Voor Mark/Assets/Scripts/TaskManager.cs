@@ -57,7 +57,8 @@ namespace Assets.Scripts
 
             if (lastSpawned == null)
             {
-                lastSpawned = messages[rand.Next(0, messages.Count)];
+                MessageHolder[] possible = messages.Where(x => !currentTasks.Any(a => a.Message == x.Message)).ToArray();
+                lastSpawned = possible[rand.Next(0, possible.Length)];
             }
 
             t.Create(lastSpawned.Message);
