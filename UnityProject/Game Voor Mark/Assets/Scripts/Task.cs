@@ -14,6 +14,9 @@ namespace Assets.Scripts
         public string Message;
         public TaskState State;
 
+        private bool destroy;
+        private float totalTime;
+
         #endregion
 
         #region "Constructors"
@@ -44,6 +47,11 @@ namespace Assets.Scripts
             State = (TaskState)(((int)State) + 1);
         }
 
+        public void Destroy()
+        {
+            destroy = true;
+        }
+
         #endregion
 
         #region "Abstract/Virtual Methods"
@@ -54,7 +62,17 @@ namespace Assets.Scripts
 
         #region "Inherited Methods"
 
-
+        public void Update()
+        {
+            if (destroy)
+            {
+                totalTime += Time.deltaTime;
+                if (totalTime >= 1f)
+                {
+                    Destroy(gameObject);
+                }
+            }
+        }
 
         #endregion
 

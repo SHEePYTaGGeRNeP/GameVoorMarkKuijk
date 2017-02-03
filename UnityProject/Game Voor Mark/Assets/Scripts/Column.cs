@@ -15,6 +15,6 @@ public class Column : MonoBehaviour, IPointerEnterHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        mm.CurrentHover = transform.name;
+        mm.CurrentHover = transform.tag;
     }
 }

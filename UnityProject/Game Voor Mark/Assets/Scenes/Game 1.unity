@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 34824145}
   - component: {fileID: 34824144}
   - component: {fileID: 34824147}
+  - component: {fileID: 34824148}
   m_Layer: 5
   m_Name: TaskPanel
   m_TagString: TaskPanel
@@ -197,6 +198,17 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
   m_ChildControlHeight: 0
+--- !u!114 &34824148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 34824142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 450e1046bfe20bc47bef2014b556d561, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &544580292
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,6 +330,47 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &714799749
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 714799751}
+  - component: {fileID: 714799750}
+  m_Layer: 0
+  m_Name: MM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &714799750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 714799749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f524125cdf63b654a92b70fb4b53b650, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentHover: 
+--- !u!4 &714799751
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 714799749}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 408.80206, y: 228.74864, z: 511.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &830806207
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,6 +383,7 @@ GameObject:
   - component: {fileID: 830806210}
   - component: {fileID: 830806209}
   - component: {fileID: 830806212}
+  - component: {fileID: 830806213}
   m_Layer: 5
   m_Name: ArchiverenPanel
   m_TagString: ArchivePanel
@@ -424,6 +478,17 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
   m_ChildControlHeight: 0
+--- !u!114 &830806213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 830806207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 450e1046bfe20bc47bef2014b556d561, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &959363500
 GameObject:
   m_ObjectHideFlags: 0
@@ -904,6 +969,7 @@ GameObject:
   - component: {fileID: 1211038166}
   - component: {fileID: 1211038165}
   - component: {fileID: 1211038168}
+  - component: {fileID: 1211038169}
   m_Layer: 5
   m_Name: ReviewPanel
   m_TagString: ReviewPanel
@@ -998,6 +1064,17 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
   m_ChildControlHeight: 0
+--- !u!114 &1211038169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1211038163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 450e1046bfe20bc47bef2014b556d561, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1337187494
 GameObject:
   m_ObjectHideFlags: 0
@@ -1072,6 +1149,7 @@ GameObject:
   - component: {fileID: 1366769804}
   - component: {fileID: 1366769803}
   - component: {fileID: 1366769806}
+  - component: {fileID: 1366769807}
   m_Layer: 5
   m_Name: DoingPanel
   m_TagString: DoingPanel
@@ -1166,6 +1244,17 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
   m_ChildControlHeight: 0
+--- !u!114 &1366769807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1366769801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 450e1046bfe20bc47bef2014b556d561, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1541398228
 GameObject:
   m_ObjectHideFlags: 0

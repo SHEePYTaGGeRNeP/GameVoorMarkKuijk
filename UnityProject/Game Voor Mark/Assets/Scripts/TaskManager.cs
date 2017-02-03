@@ -100,7 +100,12 @@ namespace Assets.Scripts
         {
             if (GetCardCount(TaskState.Archive) > 0)
             {
-                currentTasks.RemoveAll(x => x.State == TaskState.Archive);
+                Task[] tasks = currentTasks.Where(x => x.State == TaskState.Archive).ToArray();
+                foreach (Task t in tasks)
+                {
+                    currentTasks.Remove(t);
+                    t.Destroy();
+                }
             }
         }
 
